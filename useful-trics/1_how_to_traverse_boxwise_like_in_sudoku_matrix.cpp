@@ -8,6 +8,7 @@ int main()
   freopen("output.txt", "w", stdout);
 #endif
 
+  // input the matrix
   vector<vector<char>> mat(9, vector<char>(9));
   for (int i = 0; i < 9; i++)
   {
@@ -19,29 +20,47 @@ int main()
     // cout << endl;
   }
 
-  //   traverse boxwise
-  for (int i = 0; i < 3; i++)
+  //   traverse boxwise first approach
+  // for (int i = 0; i < 3; i++)
+  // {
+  //   for (int j = 0; j < 3; j++)
+  //   {
+  //     int count = 0;
+  //     for (int k = 0; k < 9; k++)
+  //     {
+  //       count++;
+
+  //       // main thing is this
+  //       cout << mat[3 * i + k / 3][3 * j + k % 3] << " ";
+
+  //       if (count == 3)
+  //       {
+  //         cout << endl;
+  //         count = 0;
+  //       }
+  //     }
+  //     cout << endl;
+  //   }
+  //   cout << endl;
+  // }
+
+  // second approach
+  for (int i = 0; i < 9; i += 3)
   {
-    for (int j = 0; j < 3; j++)
+    for (int j = 0; j < 9; j += 3)
     {
-      int count = 0;
-      for (int k = 0; k < 9; k++)
+
+      for (int x = i; x < i + 3; x++)
       {
-        count++;
-
-        // main thing is this
-        cout << mat[3 * i + k / 3][3 * j + k % 3] << " ";
-
-        if (count == 3)
+        for (int y = j; y < j + 3; y++)
         {
-          cout << endl;
-          count = 0;
+          cout << mat[x][y] << " ";
         }
+        cout << endl;
       }
       cout << endl;
     }
-    cout << endl;
-  }
+    }
 
   return 0;
 }
